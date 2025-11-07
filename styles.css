@@ -63,6 +63,11 @@
         margin: 0 auto;
     }
 
+    .producto:hover {
+        transform: translateY(-5px);/* Se eleva */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
     .producto {
         background-color: white;
         border: 1px solid #ddd;
