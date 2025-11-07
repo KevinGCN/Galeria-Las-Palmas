@@ -115,14 +115,24 @@
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'carrito-item';
                 itemDiv.innerHTML = `
-                    <span>${item.nombre} (x${item.cantidad})</span>
-                    <span>$${(item.precio * item.cantidad).toFixed(2)}</span>
+                    <span>${item.nombre} (x${item.cantidad} lb)</span>
+                    <span>$${(item.precio * item.cantidad).toFixed(2)} 
+                        <button onclick="eliminarProducto('${item.nombre}')">❌</button>
+                    </span>
                 `;
                 itemsDiv.appendChild(itemDiv);
                 total += item.precio * item.cantidad;
             });
 
             totalSpan.textContent = total.toFixed(2);
+        }
+
+        // Función para eliminar un producto del carrito
+        function eliminarProducto(nombre) {
+            // Filtramos todos los productos excepto el que queremos eliminar
+            carrito = carrito.filter(item => item.nombre !== nombre);
+            // Luego actualizamos la vista del carrito
+            actualizarCarrito();
         }
 
         // Función para mostrar el modal del carrito
